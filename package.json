@@ -4,7 +4,8 @@
   "description": "create a secure RESTful API that integrates both JWT (JSON Web Tokens) for authentication and OAuth2 for third-party logins.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
