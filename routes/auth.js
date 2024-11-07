@@ -33,13 +33,13 @@ router.post('/login', async (req, res) => {
   }
 
   const token = jwt.sign(
-    {
+    { 
       id: user.id,
-      role: user.role,
+      role: user.role 
     },
     process.env.JWT_SECRET,
-    { expiresIn: '1h' }, // Added trailing comma
-  );
+    { expiresIn: '1h' }
+  );  // No trailing comma
 
   return res.json({ token }); // Ensure a return is used here for consistency
 });
