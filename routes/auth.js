@@ -17,9 +17,9 @@ router.post('/signup', async (req, res) => {
       role: role || 'user', // Added trailing comma for consistency
     });
     await user.save();
-    return res.status(201).json({ message: 'User registered successfully!' }); // Added return for consistency
+    return res.status(201).json({ message: 'User registered successfully!' });
   } catch (error) {
-    return res.status(400).json({ message: 'Error registering user' }); // Added return for consistency
+    return res.status(400).json({ message: 'Error registering user' });
   }
 });
 
@@ -39,9 +39,9 @@ router.post('/login', async (req, res) => {
     },
     process.env.JWT_SECRET,
     { expiresIn: '1h' }
-  );  // No trailing comma
+  ); // No trailing comma here because it's the last property in this block
 
-  return res.json({ token }); // Ensure a return is used here for consistency
+  return res.json({ token });
 });
 
 module.exports = router;
