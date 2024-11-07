@@ -14,6 +14,21 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Public Route: Get a single book by ID
+router.get('/:id', async (req, res) => {
+  const bookId = req.params.id;
+
+  try {
+    const book = await Book.findById(bookId);
+    if (!book) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
+    res.json(book);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch book', error: error.message });
+  }
+});
+
 // Admin-only Route: Add a new book
 router.post('/', authenticateJWT, authorizeRoles('admin'), async (req, res) => {
   const { title, author, description } = req.body;
@@ -71,3 +86,4 @@ router.delete('/:id', authenticateJWT, authorizeRoles('admin'), async (req, res)
 });
 
 module.exports = router;
+
