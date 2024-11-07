@@ -16,9 +16,9 @@ router.post('/signup', async (req, res) => {
       role: role || 'user',
     });
     await user.save();
-    res.status(201).json({ message: 'User registered successfully!' });
+    return res.status(201).json({ message: 'User registered successfully!' }); // Added return for consistency
   } catch (error) {
-    res.status(400).json({ message: 'Error registering user' });
+    return res.status(400).json({ message: 'Error registering user' }); // Added return for consistency
   }
 });
 

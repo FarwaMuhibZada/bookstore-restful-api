@@ -2,6 +2,7 @@ const express = require('express');
 const authenticateJWT = require('../middleware/auth');
 const authorizeRoles = require('../middleware/roles');
 const Book = require('../models/Book');
+
 const router = express.Router();
 
 // Public Route: Get all books
@@ -55,7 +56,7 @@ router.put('/:id', authenticateJWT, authorizeRoles('admin'), async (req, res) =>
     const updatedBook = await Book.findByIdAndUpdate(
       bookId,
       { title, author, description },
-      { new: true }
+      { new: true },
     );
 
     if (!updatedBook) {
