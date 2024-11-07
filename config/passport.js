@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 require('dotenv').config();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -10,8 +11,9 @@ console.log('Google Client Secret:', process.env.GOOGLE_CLIENT_SECRET);
 // Check for missing environment variables
 if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   console.error('Google OAuth credentials missing!');
-  process.exit(1);  // Exit the application if critical environment variables are missing
+  process.exit(1); // Exit the application if critical environment variables are missing
 }
+/* eslint-enable no-console */
 
 // Configure Google OAuth strategy
 passport.use(

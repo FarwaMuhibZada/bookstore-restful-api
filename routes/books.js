@@ -86,4 +86,3 @@ router.delete('/:id', authenticateJWT, authorizeRoles('admin'), async (req, res)
 });
 
 module.exports = router;
-
