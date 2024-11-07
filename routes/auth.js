@@ -6,7 +6,12 @@ const router = express.Router();
 
 // Sign up
 router.post('/signup', async (req, res) => {
-  const { username, email, password, role } = req.body;
+  const { 
+    username, 
+    email, 
+    password, 
+    role 
+  } = req.body;
 
   try {
     // Create a new user (role defaults to 'user')
@@ -25,7 +30,10 @@ router.post('/signup', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { 
+    email, 
+    password 
+  } = req.body;  
 
   const user = await User.findOne({ email });
   if (!user || !(await user.comparePassword(password))) {
@@ -33,12 +41,12 @@ router.post('/login', async (req, res) => {
   }
 
   const token = jwt.sign(
-    { 
+    {
       id: user.id,
       role: user.role, // Added trailing comma for consistency
     },
     process.env.JWT_SECRET,
-    { expiresIn: '1h' }
+    { expiresIn: '1h' },
   ); // No trailing comma here because it's the last property in this block
 
   return res.json({ token });
