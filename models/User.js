@@ -9,9 +9,12 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function save(next) { // Named async function
-  if (!this.isModified('password')) return next();
+  if (!this.isModified('password')) {
+    return next(); // Always return next() if password is not modified
+  }
+
   this.password = await bcrypt.hash(this.password, 10); // Hash password before saving
-  next();
+  return next(); // Ensure a return is used consistently
 });
 
 userSchema.methods.comparePassword = function (password) {

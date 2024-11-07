@@ -8,9 +8,9 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const books = await Book.find();
-    res.json(books);
+    return res.json(books); // Added return for consistency
   } catch (error) {
-    res.status(500).json({ message: 'Failed to fetch books' });
+    return res.status(500).json({ message: 'Failed to fetch books' }); // Added return for consistency
   }
 });
 
@@ -23,9 +23,9 @@ router.get('/:id', async (req, res) => {
     if (!book) {
       return res.status(404).json({ message: 'Book not found' });
     }
-    res.json(book);
+    return res.json(book); // Added return for consistency
   } catch (error) {
-    res.status(500).json({ message: 'Failed to fetch book', error: error.message });
+    return res.status(500).json({ message: 'Failed to fetch book', error: error.message }); // Added return for consistency
   }
 });
 
@@ -40,9 +40,9 @@ router.post('/', authenticateJWT, authorizeRoles('admin'), async (req, res) => {
   try {
     const newBook = new Book({ title, author, description });
     await newBook.save();
-    res.status(201).json(newBook);
+    return res.status(201).json(newBook); // Added return for consistency
   } catch (error) {
-    res.status(400).json({ message: 'Failed to create book' });
+    return res.status(400).json({ message: 'Failed to create book' }); // Added return for consistency
   }
 });
 
@@ -62,9 +62,9 @@ router.put('/:id', authenticateJWT, authorizeRoles('admin'), async (req, res) =>
       return res.status(404).json({ message: 'Book not found' });
     }
 
-    res.json(updatedBook);
+    return res.json(updatedBook); // Added return for consistency
   } catch (error) {
-    res.status(400).json({ message: 'Failed to update book' });
+    return res.status(400).json({ message: 'Failed to update book' }); // Added return for consistency
   }
 });
 
@@ -79,9 +79,9 @@ router.delete('/:id', authenticateJWT, authorizeRoles('admin'), async (req, res)
       return res.status(404).json({ message: 'Book not found' });
     }
 
-    res.json({ message: 'Book deleted successfully' });
+    return res.json({ message: 'Book deleted successfully' }); // Added return for consistency
   } catch (error) {
-    res.status(500).json({ message: 'Failed to delete book' });
+    return res.status(500).json({ message: 'Failed to delete book' }); // Added return for consistency
   }
 });
 

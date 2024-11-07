@@ -42,7 +42,7 @@ passport.use(
         done(error, false);
       }
     }
-  )
+  ),
 );
 
 // Serialize user to the session
