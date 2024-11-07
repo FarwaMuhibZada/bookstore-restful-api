@@ -6,11 +6,11 @@ const router = express.Router();
 
 // Sign up
 router.post('/signup', async (req, res) => {
-  const { 
-    username, 
-    email, 
-    password, 
-    role 
+  const {
+    username,
+    email,
+    password,
+    role,
   } = req.body;
 
   try {
@@ -30,10 +30,10 @@ router.post('/signup', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
-  const { 
-    email, 
-    password 
-  } = req.body;  
+  const {
+    email,
+    password,
+  } = req.body;
 
   const user = await User.findOne({ email });
   if (!user || !(await user.comparePassword(password))) {
