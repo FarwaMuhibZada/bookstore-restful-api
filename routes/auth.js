@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Sign up
 router.post('/signup', async (req, res) => {
+
   const { username, email, password, role } = req.body;
 
   try {
@@ -39,6 +40,7 @@ router.post('/login', async (req, res) => {
     },
     process.env.JWT_SECRET,
     { expiresIn: '1h' }, // Added trailing comma
+    
   );
 
   return res.json({ token }); // Ensure a return is used here for consistency
