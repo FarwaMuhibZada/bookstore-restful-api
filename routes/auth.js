@@ -14,7 +14,7 @@ router.post('/signup', async (req, res) => {
       username,
       email,
       password,
-      role: role || 'user',
+      role: role || 'user', // Added trailing comma for consistency
     });
     await user.save();
     return res.status(201).json({ message: 'User registered successfully!' }); // Added return for consistency
@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
   const token = jwt.sign(
     { 
       id: user.id,
-      role: user.role 
+      role: user.role, // Added trailing comma for consistency
     },
     process.env.JWT_SECRET,
     { expiresIn: '1h' }
