@@ -6,6 +6,7 @@
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
+- [Authentication with OAuth2](#authentication-with-oauth2)
 - [Environment Variables](#environment-variables)
 - [API Documentation](#api-documentation)
 - [Middleware](#middleware)
@@ -22,6 +23,7 @@ The **bookstore-restful-api** is a RESTful API that allows administrators to man
 - ✏️ **CRUD Operations**: Create, read, update, and delete books.
 - 🔐 **Role-Based Access Control**: Only administrators can add, update, or delete books.
 - 🔑 **User Authentication**: Users authenticate via JSON Web Tokens (JWT).
+- **OAuth2 Authentication**: Users can sign in using their Google account via OAuth2 for a seamless login experience.
 - ✅ **Data Validation**: Validates required fields for book data.
 - ⚠️ **Error Handling**: Provides meaningful error messages and status codes.
 
@@ -80,6 +82,25 @@ To set up and run the project locally, follow these steps:
 ├── package.json
 └── README.md
 ```
+## Authentication with OAuth2
+
+This project includes OAuth2-based authentication, providing users with the option to sign in using their Google account. The OAuth2 implementation allows for secure and easy authentication, improving user experience by enabling single sign-on.
+
+### How it Works
+- **OAuth2 with Google**: Users can sign in to the application using their Google account, eliminating the need for a separate username and password.
+- **Secure Authentication**: Using OAuth2 and Google Sign-In ensures that user credentials are handled securely.
+- **Token Management**: Once authenticated, the application issues a JSON Web Token (JWT) to manage session state for authenticated routes.
+
+### Environment Variables for OAuth2
+
+To enable OAuth2 with Google, set up the following environment variables in your `.env` file:
+
+```bash
+GOOGLE_CLIENT_ID=<your-google-client-id>
+GOOGLE_CLIENT_SECRET=<your-google-client-secret>
+JWT_SECRET=<your-jwt-secret>
+
+
 ## Environment Variables
 ```bash
 MONGO_URI = mogodb url;
